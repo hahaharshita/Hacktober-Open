@@ -93,3 +93,58 @@ int main()
     }
     return 0;
 }
+// binary tree program in c++
+#include<bits/stdc++.h>
+using namespace std;
+struct node{
+    int data;
+    node *left;
+    node *right;
+    node(int data){
+        this->data=data;
+        this->left=NULL;
+        this->right=NULL;
+    }
+};
+void preorder(node *n){
+    if(n==0){
+        return;
+    }
+    else{
+        cout<<n->data<<" ";
+        preorder(n->left);
+        preorder(n->right);
+    }
+}
+void postorder(node *n){
+    if(n==0){
+        return;
+    }
+    else{
+        postorder(n->left);
+        postorder(n->right);
+        cout<<n->data<<" ";
+    }
+}
+void inorder(node *n){
+    if(n==0){
+        return;
+    }
+    else{
+        inorder(n->left);
+        cout<<n->data<<" ";
+        inorder(n->right);
+    }
+}
+int main(){
+   node *n=new node(1);
+   n->left=new node(2);
+   n->right=new node(3);
+   n->left->left=new node(4);
+   n->left->right=new node(5);
+   preorder(n);
+   cout<<endl;
+   inorder(n);
+   cout<<endl;
+   postorder(n);
+}
